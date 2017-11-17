@@ -134,8 +134,15 @@
     
     // Content edge insets
     if (self.item.title && self.item.image) {
-        self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
-        self.button.imageEdgeInsets = UIEdgeInsetsMake(0, -3, 0, 0);
+        
+        if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionLeftToRight) {
+            self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+            self.button.imageEdgeInsets = UIEdgeInsetsMake(0, -3, 0, 0);
+        } else {
+            self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 6);
+            self.button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -3);
+        }
+        
     } else {
         self.button.titleEdgeInsets = UIEdgeInsetsZero;
         self.button.imageEdgeInsets = UIEdgeInsetsZero;
